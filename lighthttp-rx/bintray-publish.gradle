@@ -1,19 +1,23 @@
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
 
+ext {
+
+}
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
             groupId GROUP
             version VERSION_NAME
-            artifactId 'lighthttp'
+            artifactId 'lighthttp-rx'
 //            artifact "build/outputs/aar/binder-release.aar"
             artifact androidJar
             artifact androidJavadocsJar
             artifact androidSourcesJar
             pom.withXml {
                 Node root = asNode()
-                root.appendNode('name', 'lighthttp')
+                root.appendNode('name', 'lighthttp-rx')
                 root.appendNode('description', POM_DESCRIPTION)
                 root.appendNode('url', POM_URL)
 
@@ -52,7 +56,7 @@ bintray {
     publish = false
     pkg {
         repo = 'maven'
-        name = 'lighthttp'
+        name = 'lighthttp-rx'
         licenses = ['Apache-2.0']
         labels = ['android']
 

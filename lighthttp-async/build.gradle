@@ -38,3 +38,6 @@ android.libraryVariants.all { variant ->
         from tasks["javadoc${variant.name.capitalize()}"]
     }
 }
+
+apply from: 'android-artifacts.gradle'
+apply from: 'bintray-publish.gradle'

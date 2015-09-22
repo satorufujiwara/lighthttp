@@ -1,1 +1,1 @@
-include ':lighthttp', ':lighthttp-async', ':lighthttp-gson'
+include ':lighthttp', ':lighthttp-async', ':lighthttp-rx', ':lighthttp-gson'

@@ -13,7 +13,7 @@ Lightweitht HTTP client for Android.
 
 ```groovy
 dependencies {
-    compile 'jp.satorufujiwara:lighthttp:0.1.0'
+    compile 'jp.satorufujiwara:lighthttp:0.0.1'
 }
 ```
 

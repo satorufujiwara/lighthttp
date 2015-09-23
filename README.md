@@ -11,6 +11,8 @@ Lightweitht HTTP client for Android.
 # Features
 * Simple HTTP client. 
 * Depends on Android(HttpUrlConnection) only.
+* Execute asynchronously or can use with RxJava.
+* Convert request and response.
 
 # Usage
 

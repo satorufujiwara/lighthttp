@@ -1,4 +1,4 @@
-package jp.satorufujiwara.http;
+package jp.satorufujiwara.http.utils;
 
 import android.webkit.CookieManager;
 
@@ -14,7 +14,7 @@ import java.util.Map;
  * http://stackoverflow.com/questions/18057624/two-way-sync-for-cookies-between-
  * httpurlconnection-java-net-cookiemanager-and
  */
-class WebkitCookieManagerProxy extends CookieHandler {
+public class WebkitCookieManagerProxy extends CookieHandler {
 
     private CookieManager webkitCookieManager;
 

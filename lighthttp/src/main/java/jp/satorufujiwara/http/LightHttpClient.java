@@ -1,6 +1,7 @@
 package jp.satorufujiwara.http;
 
 import java.io.IOException;
+import java.net.CookieHandler;
 
 public class LightHttpClient {
 
@@ -8,7 +9,7 @@ public class LightHttpClient {
     private ConverterProvider converterProvider = DEFAULT_CONVERTER;
 
     public LightHttpClient() {
-
+        CookieHandler.setDefault(new WebkitCookieManagerProxy());
     }
 
     public void setConnectTimeout(int timeoutMillis) {

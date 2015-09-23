@@ -2,9 +2,10 @@ package jp.satorufujiwara.http;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.Closeable;
 import java.io.IOException;
 
-public class ResponseBody {
+public class ResponseBody implements Closeable {
 
     private final String contentType;
     private final long contentLength;
@@ -15,6 +16,11 @@ public class ResponseBody {
         this.contentType = contentType;
         this.contentLength = contentLength;
         this.inputStream = inputStream;
+    }
+
+    @Override
+    public void close() throws IOException {
+        inputStream.close();
     }
 
     public String contentType() {
@@ -40,16 +46,8 @@ public class ResponseBody {
             }
             return os.toByteArray();
         } finally {
-            try {
-                os.close();
-            } catch (IOException ignore) {
-
-            }
-            try {
-                is.close();
-            } catch (IOException ignore) {
-
-            }
+            Utils.closeQuietly(os);
+            Utils.closeQuietly(is);
         }
     }
 

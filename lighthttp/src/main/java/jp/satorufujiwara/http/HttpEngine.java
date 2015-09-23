@@ -82,12 +82,7 @@ class HttpEngine {
             os = new BufferedOutputStream(urlConnection.getOutputStream());
             body.writeTo(os);
         } finally {
-            if (os != null) {
-                try {
-                    os.close();
-                } catch (final IOException ignore) {
-                }
-            }
+            Utils.closeQuietly(os);
         }
     }
 

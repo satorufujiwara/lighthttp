@@ -73,7 +73,7 @@ public class Request {
         }
 
         public <T> Builder post(T body, Type type) {
-            return task("POST", body, type);
+            return method("POST", body, type);
         }
 
         public Builder delete(RequestBody body) {
@@ -81,7 +81,7 @@ public class Request {
         }
 
         public <T> Builder delete(T body, Type type) {
-            return task("DELETE", body, type);
+            return method("DELETE", body, type);
         }
 
         public Builder put(RequestBody body) {
@@ -89,7 +89,7 @@ public class Request {
         }
 
         public <T> Builder put(T body, Type type) {
-            return task("PUT", body, type);
+            return method("PUT", body, type);
         }
 
         public Builder patch(RequestBody body) {
@@ -97,7 +97,7 @@ public class Request {
         }
 
         public <T> Builder patch(T body, Type type) {
-            return task("PATCH", body, type);
+            return method("PATCH", body, type);
         }
 
         public Builder addHeader(String name, String value) {
@@ -112,7 +112,7 @@ public class Request {
             return this;
         }
 
-        private <T> Builder task(String method, T body, Type type) {
+        public <T> Builder method(String method, T body, Type type) {
             this.method = method;
             this.body = null;
             this.task = new RequestConvertTask<>(body, converterProvider.requestConverter(type));

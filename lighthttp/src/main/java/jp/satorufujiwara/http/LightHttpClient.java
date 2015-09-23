@@ -16,7 +16,7 @@ public class LightHttpClient {
     }
 
     public void setConnectionListener(final ConnectionListener listener) {
-
+        connectionListener = listener;
     }
 
     public void setConnectTimeout(int timeoutMillis) {

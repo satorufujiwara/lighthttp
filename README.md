@@ -9,6 +9,46 @@ Lightweitht HTTP client for Android.
 
 # Usage
 
+Get a url.
+```java
+LightHttpClient httpClient = new LightHttpClient();
+Request request = new Request.Builder()
+    .url("https://api.github.com/users/satorufujiwara/repos")
+    .get()
+    .build();
+Response<String> response = httpClient.newCall(request).execute();
+String body = response.getBody();
+```
+
+Convert response to java object.
+```java
+httpClient.setConverterProvider(new GsonConverterProvider());
+
+Response<Repos> response = httpClient.newCall(request, Repos.class).execute();
+Repos body = response.getBody();
+```
+
+Execute asynchronously.
+```java
+httpClient.newCall(request, Repos.class)
+        .executeOn(AsyncExecutor.<Repos>provide())
+        .executeAsync(new AsyncCallback<Repos>() {
+            @Override
+            public void onResult(Response<Repos> response, Throwable e) {
+                
+            }
+        });
+```
+Use with [RxJava](https://github.com/ReactiveX/RxJava).
+```java
+httpClient.newCall(request, Repos.class)
+            .executeOn(RxExecutor.<Repos>provide())
+            .asObservable()
+            .subscribeOn(Schedulers.io())
+            .subscribe();
+```
+
+
 # Gradle
 
 ```groovy
@@ -16,6 +56,23 @@ dependencies {
     compile 'jp.satorufujiwara:lighthttp:0.0.1'
 }
 ```
+
+## Converter
+Gson
+```groovy
+compile 'jp.satorufujiwara:lighthttp-gson:0.0.1'
+```
+
+## Executor
+Async
+```groovy
+compile 'jp.satorufujiwara:lighthttp-async:0.0.1'
+```
+RxJava
+```groovy
+compile 'jp.satorufujiwara:lighthttp-rx:0.0.1'
+```
+
 
 License
 -------

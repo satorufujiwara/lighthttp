@@ -6,8 +6,13 @@ public class LightHttpClient {
 
     private final HttpConfig httpConfig = new HttpConfig();
     private ConverterProvider converterProvider = DEFAULT_CONVERTER;
+    private ConnectionListener connectionListener = emptyListener();
 
     public LightHttpClient() {
+
+    }
+
+    public void setConnectionListener(final ConnectionListener listener) {
 
     }
 
@@ -24,13 +29,20 @@ public class LightHttpClient {
     }
 
     public <T> Call<T> newCall(final Request request, Class<T> clz) {
-        return new Call<>(new ExecutorTask<>(new HttpEngine(httpConfig, request),
+        return new Call<>(new ExecutorTask<>(
+                new HttpEngine(httpConfig, request, connectionListener),
                 converterProvider.responseConverter(clz)));
     }
 
     public Call<String> newCall(final Request request) {
-        return new Call<>(new ExecutorTask<>(new HttpEngine(httpConfig, request),
+        return new Call<>(new ExecutorTask<>(
+                new HttpEngine(httpConfig, request, connectionListener),
                 DEFAULT_CONVERTER.responseConverter(String.class)));
+    }
+
+    private static ConnectionListener emptyListener() {
+        return new ConnectionListener() {
+        };
     }
 
     private static final ConverterProvider DEFAULT_CONVERTER =

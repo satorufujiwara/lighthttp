@@ -16,6 +16,7 @@ class HttpEngine {
 
     private final HttpConfig config;
     private final Request request;
+    private final ConnectionListener connectionListener;
 
     static {
         // Work around pre-Froyo bugs in HTTP connection reuse.
@@ -24,9 +25,10 @@ class HttpEngine {
         }
     }
 
-    HttpEngine(final HttpConfig config, final Request request) {
+    HttpEngine(final HttpConfig config, final Request request, final ConnectionListener l) {
         this.config = config;
         this.request = request;
+        this.connectionListener = l;
     }
 
     public HttpResponse execute() throws IOException {
@@ -43,7 +45,9 @@ class HttpEngine {
             doOutput(urlConnection, request.getBody());
         }
         urlConnection.setDoInput(true);
+        connectionListener.onPreConnect(request, urlConnection);
         urlConnection.connect();
+        connectionListener.onPostConnect(request, urlConnection);
         final int statusCode = urlConnection.getResponseCode();
         final Map<String, List<String>> responseHeaders = urlConnection.getHeaderFields();
         final ResponseBody body = doInput(urlConnection);

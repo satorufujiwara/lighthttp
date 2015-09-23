@@ -15,7 +15,6 @@ import java.util.Map;
 class HttpEngine {
 
     private final HttpConfig config;
-    private final Request request;
     private final ConnectionListener connectionListener;
 
     static {
@@ -25,18 +24,18 @@ class HttpEngine {
         }
     }
 
-    HttpEngine(final HttpConfig config, final Request request, final ConnectionListener l) {
+    HttpEngine(final HttpConfig config, final ConnectionListener l) {
         this.config = config;
-        this.request = request;
         this.connectionListener = l;
     }
 
-    public HttpResponse execute() throws IOException {
+    public HttpResponse execute(final Request request) throws IOException {
         final URL httpUrl = new URL(request.getUrl());
         final HttpURLConnection urlConnection = (HttpURLConnection) httpUrl.openConnection();
         urlConnection.setRequestMethod(request.getMethod());
         urlConnection.setReadTimeout(config.readTimeout);
         urlConnection.setConnectTimeout(config.connectTimeout);
+        urlConnection.setDoInput(true);
         final Map<String, String> headers = request.getHeaders();
         if (headers != null && !headers.isEmpty()) {
             addRequestProperties(urlConnection, headers);
@@ -44,7 +43,6 @@ class HttpEngine {
         if (isOutput(request)) {
             doOutput(urlConnection, request.getBody());
         }
-        urlConnection.setDoInput(true);
         connectionListener.onPreConnect(request, urlConnection);
         urlConnection.connect();
         connectionListener.onPostConnect(request, urlConnection);
@@ -75,6 +73,10 @@ class HttpEngine {
     private static void doOutput(final HttpURLConnection urlConnection, final RequestBody body)
             throws IOException {
         urlConnection.setDoOutput(true);
+        final String contentType = body.contentType();
+        if (contentType != null) {
+            urlConnection.addRequestProperty("Content-Type", contentType);
+        }
         final long contentLength = body.contentLength();
         if (contentLength > 0) {
             setFixedLengthStreamingMode(urlConnection, contentLength);

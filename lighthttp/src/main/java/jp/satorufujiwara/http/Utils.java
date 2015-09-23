@@ -2,7 +2,7 @@ package jp.satorufujiwara.http;
 
 import java.io.Closeable;
 
-final class Utils {
+public final class Utils {
 
     private Utils() {
 

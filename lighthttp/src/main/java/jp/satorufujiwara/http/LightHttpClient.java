@@ -20,27 +20,29 @@ public class LightHttpClient {
     }
 
     public void setConnectTimeout(int timeoutMillis) {
-        this.httpConfig.connectTimeout = timeoutMillis;
+        httpConfig.connectTimeout = timeoutMillis;
     }
 
     public void setReadTimeout(int timeoutMillis) {
-        this.httpConfig.readTimeout = timeoutMillis;
+        httpConfig.readTimeout = timeoutMillis;
     }
 
     public void setConverterProvider(ConverterProvider provider) {
-        this.converterProvider = provider;
+        converterProvider = provider;
+    }
+
+    public <T> Call<T> newCall(final Request request,
+            ConverterProvider.ResponseConverter<T> converter) {
+        return new Call<>(new ExecutorTask<>(request,
+                new HttpEngine(httpConfig, connectionListener), converter));
     }
 
     public <T> Call<T> newCall(final Request request, Type type) {
-        return new Call<>(new ExecutorTask<>(request,
-                new HttpEngine(httpConfig, connectionListener),
-                converterProvider.<T>responseConverter(type)));
+        return newCall(request, converterProvider.<T>responseConverter(type));
     }
 
     public Call<String> newCall(final Request request) {
-        return new Call<>(new ExecutorTask<>(request,
-                new HttpEngine(httpConfig, connectionListener),
-                DEFAULT_CONVERTER.<String>responseConverter(String.class)));
+        return newCall(request, DEFAULT_CONVERTER.<String>responseConverter(String.class));
     }
 
     public Request.Builder newRequest() {

@@ -3,10 +3,10 @@ package jp.satorufujiwara.http;
 
 import java.io.IOException;
 
-public class RequestConvertTask<T> {
+class RequestConvertTask<T> {
 
-    T obj;
-    ConverterProvider.RequestConverter<T> converter;
+    private T obj;
+    private ConverterProvider.RequestConverter<T> converter;
 
     RequestConvertTask(T obj, ConverterProvider.RequestConverter<T> converter) {
         this.obj = obj;

@@ -94,8 +94,8 @@ class HttpEngine {
             throws IOException {
         final String contentType = urlConnection.getContentType();
         final long contentLength = urlConnection.getContentLength();
-        return ResponseBody.create(contentType, contentLength,
-                new BufferedInputStream(getResponseStream(urlConnection)));
+        return new ResponseBody(contentType, contentLength,
+                new BufferedInputStream(getResponseStream(urlConnection)), urlConnection);
     }
 
     private static InputStream getResponseStream(final HttpURLConnection urlConnection) {

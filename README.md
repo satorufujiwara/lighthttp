@@ -6,6 +6,8 @@ lighthttp
 Lightweitht HTTP client for Android.
 
 # Features
+* Simple HTTP client. 
+* Depends on Android(HttpUrlConnection) only.
 
 # Usage
 

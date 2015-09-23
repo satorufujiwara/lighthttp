@@ -4,8 +4,6 @@ lighthttp
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Download](https://api.bintray.com/packages/satorufujiwara/maven/lighthttp/images/download.svg)](https://bintray.com/satorufujiwara/maven/lighthttp/_latestVersion)
 
-*This library is experimental. API and all codes will be changed without notice*
-
 Lightweitht HTTP client for Android.
 
 # Features
@@ -95,6 +93,13 @@ RxJava
 compile 'jp.satorufujiwara:lighthttp-rx:0.1.0'
 ```
 
+# Milestone
+
+- [ ] Multipart request body.
+- [ ] Jackson converter.
+- [ ] Jsonic converter.
+- [ ] Sample app.
+- [ ] Testing.
 
 License
 -------

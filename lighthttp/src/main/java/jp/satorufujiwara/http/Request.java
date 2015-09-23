@@ -50,6 +50,31 @@ public class Request {
             return this;
         }
 
+        public Builder get() {
+            return method("GET", null);
+        }
+
+        public Builder post(RequestBody body) {
+            return method("POST", body);
+        }
+
+        public Builder delete(RequestBody body) {
+            return method("DELETE", body);
+        }
+
+        public Builder put(RequestBody body) {
+            return method("PUT", body);
+        }
+
+        public Builder patch(RequestBody body) {
+            return method("PATCH", body);
+        }
+
+        public Builder addHeader(String name, String value) {
+            headers.put(name, value);
+            return this;
+        }
+
         public Builder method(String method, RequestBody body) {
             this.method = method;
             this.body = body;

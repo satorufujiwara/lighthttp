@@ -6,19 +6,23 @@ lighthttp
 Lightweitht HTTP client for Android.
 
 # Features
+* Simple HTTP client. 
+* Depends on Android(HttpUrlConnection) only.
 
 # Usage
 
 Get a url.
 ```java
 LightHttpClient httpClient = new LightHttpClient();
-Request request = new Request.Builder()
+Request request = httpClient.newRequest()
     .url("https://api.github.com/users/satorufujiwara/repos")
     .get()
     .build();
 Response<String> response = httpClient.newCall(request).execute();
 String body = response.getBody();
 ```
+
+## Converter
 
 Convert response to java object.
 ```java
@@ -27,6 +31,19 @@ httpClient.setConverterProvider(new GsonConverterProvider());
 Response<Repos> response = httpClient.newCall(request, Repos.class).execute();
 Repos body = response.getBody();
 ```
+
+Post json object.
+```java
+httpClient.setConverterProvider(new GsonConverterProvider());
+
+Item obj = new Item();
+Request request = httpClient.newRequest()
+    .url(url)
+    .post(obj, Item.class)
+    .build();
+```
+
+## Executor
 
 Execute asynchronously.
 ```java
@@ -53,24 +70,24 @@ httpClient.newCall(request, Repos.class)
 
 ```groovy
 dependencies {
-    compile 'jp.satorufujiwara:lighthttp:0.0.1'
+    compile 'jp.satorufujiwara:lighthttp:0.1.0'
 }
 ```
 
 ## Converter
 Gson
 ```groovy
-compile 'jp.satorufujiwara:lighthttp-gson:0.0.1'
+compile 'jp.satorufujiwara:lighthttp-gson:0.1.0'
 ```
 
 ## Executor
 Async
 ```groovy
-compile 'jp.satorufujiwara:lighthttp-async:0.0.1'
+compile 'jp.satorufujiwara:lighthttp-async:0.1.0'
 ```
 RxJava
 ```groovy
-compile 'jp.satorufujiwara:lighthttp-rx:0.0.1'
+compile 'jp.satorufujiwara:lighthttp-rx:0.1.0'
 ```
 
 

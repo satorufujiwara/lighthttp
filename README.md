@@ -101,6 +101,18 @@ compile 'jp.satorufujiwara:lighthttp-rx:0.1.0'
 - [ ] Sample app.
 - [ ] Testing.
 
+# Developed By
+
+Satoru Fujiwara (satorufujiwara)
+* Twitter [satorufujiwara](https://twitter.com/satorufujiwara)
+* holly.wist@gmail.com
+ 
+Other Projects
+* [recyclerview-binder](https://github.com/satorufujiwara/recyclerview-binder)
+ * Android Library for RecyclerView to manage order of items and multiple view types. 
+* [material-scrolling](https://github.com/satorufujiwara/material-scrolling)
+ * Android library for material scrolling techniques.
+
 License
 -------
     Copyright 2015 Satoru Fujiwara

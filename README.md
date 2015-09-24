@@ -2,6 +2,7 @@ lighthttp
 ===
 
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-lighthttp-green.svg?style=flat)](https://android-arsenal.com/details/1/2543)
 [![Download](https://api.bintray.com/packages/satorufujiwara/maven/lighthttp/images/download.svg)](https://bintray.com/satorufujiwara/maven/lighthttp/_latestVersion)
 
 Lightweitht HTTP client for Android.

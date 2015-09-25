@@ -2,9 +2,8 @@ lighthttp
 ===
 
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-lighthttp-green.svg?style=flat)](https://android-arsenal.com/details/1/2543)
 [![Download](https://api.bintray.com/packages/satorufujiwara/maven/lighthttp/images/download.svg)](https://bintray.com/satorufujiwara/maven/lighthttp/_latestVersion)
-
-*This library is experimental. API and all codes will be changed without notice*
 
 Lightweitht HTTP client for Android.
 
@@ -95,6 +94,25 @@ RxJava
 compile 'jp.satorufujiwara:lighthttp-rx:0.1.0'
 ```
 
+# Milestone
+
+- [ ] Multipart request body.
+- [ ] Jackson converter.
+- [ ] Jsonic converter.
+- [ ] Sample app.
+- [ ] Testing.
+
+# Developed By
+
+Satoru Fujiwara (satorufujiwara)
+* Twitter [satorufujiwara](https://twitter.com/satorufujiwara)
+* holly.wist@gmail.com
+ 
+Other Projects
+* [recyclerview-binder](https://github.com/satorufujiwara/recyclerview-binder)
+ * Android Library for RecyclerView to manage order of items and multiple view types. 
+* [material-scrolling](https://github.com/satorufujiwara/material-scrolling)
+ * Android library for material scrolling techniques.
 
 License
 -------

@@ -102,7 +102,7 @@ class HttpEngine {
 
     private static InputStream getResponseStream(final HttpURLConnection urlConnection) {
         try {
-            return new BufferedInputStream(urlConnection.getInputStream());
+            return urlConnection.getInputStream();
         } catch (final IOException e) {
             return urlConnection.getErrorStream();
         }

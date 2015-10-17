@@ -74,24 +74,24 @@ httpClient.newCall(request, Repos.class)
 
 ```groovy
 dependencies {
-    compile 'jp.satorufujiwara:lighthttp:0.1.0'
+    compile 'jp.satorufujiwara:lighthttp:0.1.1'
 }
 ```
 
 ## Converter
 Gson
 ```groovy
-compile 'jp.satorufujiwara:lighthttp-gson:0.1.0'
+compile 'jp.satorufujiwara:lighthttp-gson:0.1.1'
 ```
 
 ## Executor
 Async
 ```groovy
-compile 'jp.satorufujiwara:lighthttp-async:0.1.0'
+compile 'jp.satorufujiwara:lighthttp-async:0.1.1'
 ```
 RxJava
 ```groovy
-compile 'jp.satorufujiwara:lighthttp-rx:0.1.0'
+compile 'jp.satorufujiwara:lighthttp-rx:0.1.1'
 ```
 
 # Milestone
